@@ -1,2 +1,2 @@
 # nodejs-movie
-Node.JS Movie Uygulaması
+Node.JS Movie Api
