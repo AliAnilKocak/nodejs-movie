@@ -130,4 +130,18 @@ router.put('/:director_id',(req,res,next)=>{
    });
 });
 
+//delete
+
+router.delete('/:director_id',(req,res,next)=>{
+   //res.send(req.params); //tarayıcıdan movie_id kısmına girilen datayı req.params ile aldık
+   const promise = Director.findByIdAndRemove(req.params.director_id);//girilen id ye göre veriyi getirir.
+   promise.then((director)=>{
+     if(!director)
+     next({message: 'The director was not found'});
+     res.json(director);
+   }).catch((err)=> {
+     res.json(err);
+   });
+});
+
 module.exports = router;
