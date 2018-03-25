@@ -6,7 +6,7 @@ const DirectorSchema = new Schema({
   name: String,
   surname: String,
   bio: String,
-  createdSt: {
+  createdAt: {
     type:Date,
     default: Date.now
   }

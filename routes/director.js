@@ -112,4 +112,22 @@ router.get('/:director_id',(req,res)=>{
   })
 });
 
+//update
+
+router.put('/:director_id',(req,res,next)=>{
+   //res.send(req.params); //tarayıcıdan movie_id kısmına girilen datayı req.params ile aldık
+   const promise = Director.findByIdAndUpdate(
+     req.params.director_id,
+     req.body,
+     {new: true} // güncellenen datayla birlikte koleksiyonunun yazdırılması
+   );// güncelleme işlemini yapar.(put)
+   promise.then((director)=>{
+     if(!director)
+     next({message: 'The director was not found'});
+     res.json(director);
+   }).catch((err)=> {
+     res.json(err);
+   });
+});
+
 module.exports = router;
